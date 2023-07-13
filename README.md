@@ -2,6 +2,13 @@
 
 Monorepo with an application built with microservices architecture.
 
+## Architecture
+
+<p align="center">
+  <img src="https://github.com/uma-dev/micro-services/assets/22565959/0864d392-28c9-4e8d-a637-7349c83c0dcd" />
+</p>
+
+
 ## Gateway
 
 The gateway uses the following dependencies:
