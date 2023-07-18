@@ -58,4 +58,6 @@ The Worker microservice needs the following dependencies:
    - @NoArgsConstructor (lombok)
    - @Builder (lombok)
    - @Id (jpa)
-6. Create repository interface to extend JPA Repository
+6. Create repository interface (dao) to extend JPA Repository
+7. Create the service (interface and implementation)
+8. Create the REST controller for employee
