@@ -8,5 +8,5 @@ public interface EmployeeService {
 
     List<Employee> findAll();
 
-    void save(Employee theEmployee);
+    Employee save(Employee theEmployee);
 }
