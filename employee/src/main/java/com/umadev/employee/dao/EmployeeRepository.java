@@ -1,7 +1,7 @@
-package com.umadev.worker.dao;
+package com.umadev.employee.dao;
 
-import com.umadev.worker.entity.Worker;
+import com.umadev.employee.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface WorkerRepository extends JpaRepository<Worker, Integer> {
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 }

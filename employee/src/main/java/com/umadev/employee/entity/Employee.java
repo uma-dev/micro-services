@@ -1,4 +1,4 @@
-package com.umadev.worker.entity;
+package com.umadev.employee.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 
-public class Worker{
+public class Employee {
     @Id
     private Integer id;
     private String firstName;

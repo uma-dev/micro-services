@@ -1,13 +1,13 @@
-package com.umadev.worker;
+package com.umadev.employee;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WorkerApplication {
+public class EmployeeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WorkerApplication.class, args);
+		SpringApplication.run(EmployeeApplication.class, args);
 	}
 
 }
