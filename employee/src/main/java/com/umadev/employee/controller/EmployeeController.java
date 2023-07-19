@@ -28,7 +28,7 @@ public class EmployeeController {
         employeeService = theEmployeeService;
     }
 
-    // Add mapping for POST (creating) a new Employee
+    // Add POST mapping for creating a new Employee
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Employee save( @RequestBody Employee employee) {
@@ -39,7 +39,7 @@ public class EmployeeController {
         return employeeService.save(employee);
     }
 
-    // Add get mapping to expose /employees with the list of employees
+    // Add GET mapping to expose /employees with the list of employees
     @GetMapping("/employees")
     public List<Employee> findAll(){
         return employeeService.findAll();
