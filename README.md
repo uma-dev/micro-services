@@ -32,9 +32,9 @@ The Config server needs the following dependencies
 
 - Config Sever
 
-## Worker
+## Employee
 
-The Worker microservice needs the following dependencies: 
+The Employee microservice needs the following dependencies: 
 
 - DB driver (MySQL, PostgreSQL, etc)
 - Lombok
@@ -44,20 +44,23 @@ The Worker microservice needs the following dependencies:
 - Eureka Discovery Client
 - Spring Boot Actuator
 
+## Department 
+
 ### Process of building
 
 1. After creating the gateway, discovery server and config server, add them to the project via **File/new/module from existing sources**
 2. Configure the ```application.properties``` or ```application.yml``` file.
 3. Create and import the worker microservice
-4. Config the worker microservice (including JDBC properties to connect to the DB) 
-5. Create entity inside worker class with the annotations: 
-   - @Entity (jpa)
-   - @Getter (lombok)
-   - @Setter (lombok)
-   - @AllArgsConstructor (lombok)
-   - @NoArgsConstructor (lombok)
-   - @Builder (lombok)
-   - @Id (jpa)
-6. Create repository interface (dao) to extend JPA Repository
-7. Create the service (interface and implementation)
-8. Create the REST controller for employee
+4. Config the employee microservice (including JDBC properties to connect to the DB) 
+   - Create entity inside employee class with the annotations: 
+     - @Entity (jpa)
+     - @Getter (lombok)
+     - @Setter (lombok)
+     - @AllArgsConstructor (lombok)
+     - @NoArgsConstructor (lombok)
+     - @Builder (lombok)
+     - @Id (jpa)
+   - Create repository interface (dao) to extend JPA Repository
+   - Create the service (interface and implementation)
+   - Create the REST controller for employee
+5. Create the department microservice (can use employee as a guide)
