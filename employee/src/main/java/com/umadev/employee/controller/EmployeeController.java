@@ -5,6 +5,7 @@ import com.umadev.employee.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class EmployeeController {
     }
 
     // Add POST mapping for creating a new Employee
-    @PostMapping
+    @PostMapping("/employees")
     @ResponseStatus(HttpStatus.CREATED)
     public Employee save( @RequestBody Employee employee) {
         //Set the ID to zero/0 just in case it's different in the JSON.
@@ -41,7 +42,14 @@ public class EmployeeController {
 
     // Add GET mapping to expose /employees with the list of employees
     @GetMapping("/employees")
-    public List<Employee> findAll(){
-        return employeeService.findAll();
+    public ResponseEntity<List<Employee>> findAll(){
+        return ResponseEntity.ok(employeeService.findAll());
+    }
+
+    @GetMapping("/employees/departments/{departmentId}")
+    public ResponseEntity<List<Employee>> findAll(
+            @PathVariable("departmentId") Integer departmentId
+    ) {
+        return ResponseEntity.ok(employeeService.findAllEmployeesByDepartment(departmentId));
     }
 }
