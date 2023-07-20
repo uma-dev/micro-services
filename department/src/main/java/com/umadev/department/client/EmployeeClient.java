@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 //Responsible for communication and for making an HTTP call to distant API Employee
-@FeignClient(name = "employee-service", url = "http://localhost:8090/api/employees")
+@FeignClient(name = "employeeService" ) //URL defined in the properties file
 public interface EmployeeClient {
 
     @GetMapping("/departments/{departmentId}")
