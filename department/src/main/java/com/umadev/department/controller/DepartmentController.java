@@ -1,10 +1,12 @@
 package com.umadev.department.controller;
 
 import com.umadev.department.entity.Department;
+import com.umadev.department.entity.FullDepartmentResponse;
 import com.umadev.department.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +31,7 @@ public class DepartmentController {
     }
 
     // Add POST mapping for creating a new Department
-    @PostMapping
+    @PostMapping("/departments")
     @ResponseStatus(HttpStatus.CREATED)
     public Department save(@RequestBody Department department) {
         //Set the ID to zero/0 just in case it's different in the JSON.
@@ -41,7 +43,16 @@ public class DepartmentController {
 
     // Add GET mapping to expose /departments with the list of departments
     @GetMapping("/departments")
-    public List<Department> findAll(){
-        return departmentService.findAll();
+    public ResponseEntity<List<Department>>  findAll(){
+        return ResponseEntity.ok(departmentService.findAll());
     }
+
+    @GetMapping("/departments/with-employees/{employeeId}")
+    public ResponseEntity<FullDepartmentResponse> findAll(
+            @PathVariable("employeeId") Integer employeeId
+    ) {
+        return ResponseEntity.ok(departmentService.findDepartmentsWithEmployees(employeeId));
+    }
+
+
 }
