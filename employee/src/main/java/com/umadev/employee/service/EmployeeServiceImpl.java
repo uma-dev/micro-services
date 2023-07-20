@@ -24,4 +24,9 @@ public class EmployeeServiceImpl implements EmployeeService{
     public Employee save(Employee theEmployee){
         return employeeRepository.save(theEmployee);
     }
+
+    @Override
+    public List<Employee> findAllEmployeesByDepartment (Integer departmentId){
+        return employeeRepository.findAllByDepartmentId(departmentId);
+    }
 }
