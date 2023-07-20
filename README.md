@@ -46,6 +46,17 @@ The Employee microservice needs the following dependencies:
 
 ## Department 
 
+The Employee microservice needs the following dependencies:
+
+- DB driver (MySQL, PostgreSQL, etc)
+- Lombok
+- Spring Data JPA
+- Spring Web
+- Config client
+- Eureka Discovery Client
+- Spring Boot Actuator
+- OpenFeign (added after some coding)
+
 ### Process of building
 
 1. After creating the gateway, discovery server and config server, add them to the project via **File/new/module from existing sources**
@@ -64,3 +75,4 @@ The Employee microservice needs the following dependencies:
    - Create the service (interface and implementation)
    - Create the REST controller for employee
 5. Create the department microservice (can use employee as a guide)
+6. Establish the HTTP connection between both microservices by using the REST API of Employee in Department
