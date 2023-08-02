@@ -8,7 +8,6 @@ Monorepo with an application built with microservices architecture.
   <img src="" />
 </p>
 
-
 ## Gateway
 
 The gateway uses the following dependencies:
@@ -34,7 +33,7 @@ The Config server needs the following dependencies
 
 ## Employee
 
-The Employee microservice needs the following dependencies: 
+The Employee microservice needs the following dependencies:
 
 - DB driver (MySQL, PostgreSQL, etc)
 - Lombok
@@ -44,7 +43,7 @@ The Employee microservice needs the following dependencies:
 - Eureka Discovery Client
 - Spring Boot Actuator
 
-## Department 
+## Department
 
 The Employee microservice needs the following dependencies:
 
@@ -59,11 +58,11 @@ The Employee microservice needs the following dependencies:
 
 ### Process of building
 
-1. After creating the gateway, discovery server and config server, add them to the project via **File/new/module from existing sources**
-2. Configure the ```application.properties``` or ```application.yml``` file.
-3. Create and import the worker microservice
-4. Config the employee microservice (including JDBC properties to connect to the DB) 
-   - Create entity inside employee class with the annotations: 
+1. After creating the gateway, discovery server (Eureka) and config server, add them to the project via **File/new/module from existing sources**
+2. Configure the `application.properties` or `application.yml` file.
+3. Create and import the employee microservice
+4. Config the employee microservice (including JDBC properties to connect to the DB)
+   - Create entity inside employee class with the annotations:
      - @Entity (jpa)
      - @Getter (lombok)
      - @Setter (lombok)
@@ -76,3 +75,12 @@ The Employee microservice needs the following dependencies:
    - Create the REST controller for employee
 5. Create the department microservice (can use employee as a guide)
 6. Establish the HTTP connection between both microservices by using the REST API of Employee in Department
+7. Create the client connection in the Department microservice and establish the connection. Can edit the URL so, both microservices communicate using the gateway.
+8. Move the config properties to the config server.
+9. Use zipkin to track traces between microservices.
+   - Use Docker compose yml file to describe the service Zipkin
+   - Add the zipkin related dependecies to the microservices:
+     - Discovery server
+     - Employee
+     - Department
+   - Execute zipkin after docker desktop.
