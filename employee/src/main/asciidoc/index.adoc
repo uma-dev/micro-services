@@ -1,0 +1,22 @@
+= Microservices with Spring REST Docs
+
+This is an example output for Employee microservice running at http://localhost:8222:
+
+== POST API example
+
+.request
+include::{snippets}/testAddEmployee/http-request.adoc[]
+
+.response
+include::{snippets}/testAddEmployee/http-response.adoc[]
+
+
+== GET API example
+
+.request
+include::{snippets}/testGetEmployees/http-request.adoc[]
+
+.response
+include::{snippets}/testGetEmployees/http-response.adoc[]
+
+As you can see the format is very simple, and in fact you always get the same message.
