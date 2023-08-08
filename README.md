@@ -79,8 +79,13 @@ The Employee microservice needs the following dependencies:
 8. Move the config properties to the config server.
 9. Use zipkin to track traces between microservices.
    - Use Docker compose yml file to describe the service Zipkin
-   - Add the zipkin related dependecies to the microservices:
+   - Add the zipkin related dependencies to the microservices:
      - Discovery server
      - Employee
      - Department
    - Execute zipkin after docker desktop.
+10. Add the dependencies needed for `j-unit 5` and `rest docs` in microservices with endpoints
+   - org.junit.jupiter
+   - org.springframework.restdocs
+11. Configure the test for each operation
+12. 
