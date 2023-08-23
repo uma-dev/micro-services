@@ -85,7 +85,6 @@ The Employee microservice needs the following dependencies:
      - Department
    - Execute zipkin after docker desktop.
 10. Add the dependencies needed for `j-unit 5` and `rest docs` in microservices with endpoints
-   - org.junit.jupiter
-   - org.springframework.restdocs
+    - org.junit.jupiter
+    - org.springframework.restdocs
 11. Configure the test for each operation
-12. 
