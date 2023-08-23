@@ -45,7 +45,8 @@ public class EmployeeControllerTest {
     private MockMvc mockMvc;
 
     List<Employee> employees =null;
-    Employee employeeToAdd = null;
+    Employee employeeToAdd1 = null;
+    Employee employeeToAdd2 = null;
 
     @BeforeEach
     public void setUp(WebApplicationContext webApplicationContext,
@@ -54,19 +55,36 @@ public class EmployeeControllerTest {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
                 .apply(documentationConfiguration(restDocumentation)).build();
 
-        employees=Stream.of(new Employee(1,"Emilio", "Garcia", "emilio@example.com", 1)
-                            ,new Employee(2,"Mari", "Rodriguez", "mari@example.com", 1)
-                            ,new Employee(3,"Marcelo", "Martinez", "marcelo@example.com", 2)
-                            ,new Employee(4,"Adrian", "Martinez", "adrian@example.com", 3)
-                            ,new Employee(5,"Juan", "Lopez", "juan@example.com", 5)
-                )
-                .collect(Collectors.toList());
-
         // id = 0, because our controller is defined return the same object that we passed  (id=0 in order to create the new employee)
-        employeeToAdd = new Employee(0,"Penelope", "Hartmann", "Andreane17@yahoo.com", 5);
+        employeeToAdd1 = new Employee(0,"Penelope", "Hartmann", "Andreane17@yahoo.com", 1);
+        employeeToAdd2 = new Employee(0,"Emilio", "Rodriguez", "emilio@example.com", 2);
+
+        employees=Stream.of(new Employee(1,"Penelope", "Hartmann", "Andreane17@yahoo.com", 1),
+                            new Employee(2,"Emilio", "Rodriguez", "emilio@example.com", 2))
+                            .collect(Collectors.toList());
     }
 
+    @Test
+    public void testAddEmployee1() throws Exception {
+        String employeeJson = new ObjectMapper().writeValueAsString(employeeToAdd1);
+        this.mockMvc.perform(post("/api/employees")
+                        .content(employeeJson)
+                        .contentType("application/json")).andDo(print())
+                .andExpect(status().isCreated() )
+                .andExpect(MockMvcResultMatchers.content().json(employeeJson))
+                .andDo(document("{methodName}", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint())));
+    }
 
+    @Test
+    public void testAddEmployee2() throws Exception {
+        String employeeJson = new ObjectMapper().writeValueAsString(employeeToAdd2);
+        this.mockMvc.perform(post("/api/employees")
+                        .content(employeeJson)
+                        .contentType("application/json")).andDo(print())
+                .andExpect(status().isCreated() )
+                .andExpect(MockMvcResultMatchers.content().json(employeeJson))
+                .andDo(document("{methodName}", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint())));
+    }
     @Test
     public void testGetEmployees() throws Exception {
         this.mockMvc.perform(get("/api/employees")
@@ -78,15 +96,6 @@ public class EmployeeControllerTest {
                 ));
     }
 
-    @Test
-    public void testAddEmployee() throws Exception {
-        String employeeJson = new ObjectMapper().writeValueAsString(employeeToAdd);
-        this.mockMvc.perform(post("/api/employees")
-                        .content(employeeJson)
-                        .contentType("application/json")).andDo(print())
-                        .andExpect(status().isCreated() )
-                        .andExpect(MockMvcResultMatchers.content().json(employeeJson))
-                        .andDo(document("{methodName}", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint())));
-    }
+
 
 }
