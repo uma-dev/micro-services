@@ -33,7 +33,7 @@ The Config server needs the following dependencies
 
 ## Employee
 
-The Employee microservice needs the following dependencies:
+The Employee microservice needs the following main dependencies:
 
 - DB driver (MySQL, PostgreSQL, etc)
 - Lombok
@@ -42,6 +42,8 @@ The Employee microservice needs the following dependencies:
 - Config client
 - Eureka Discovery Client
 - Spring Boot Actuator
+- Spring REST Docs
+- Spring Auto REST Docs
 
 ## Department
 
@@ -55,6 +57,8 @@ The Employee microservice needs the following dependencies:
 - Eureka Discovery Client
 - Spring Boot Actuator
 - OpenFeign (added after some coding)
+- Spring REST Docs
+- Spring Auto REST Docs
 
 ### Process of building
 
@@ -88,3 +92,4 @@ The Employee microservice needs the following dependencies:
     - org.junit.jupiter
     - org.springframework.restdocs
 11. Configure the test for each operation
+12. Add Dependencies and plugins for Spring Auto REST Docs. 
