@@ -4,9 +4,10 @@ Monorepo with an application built with microservices architecture.
 
 ## Architecture
 
-<p align="center">
+<!-- <p align="center">
   <img src="" />
 </p>
+-->
 
 ## Gateway
 
@@ -16,6 +17,7 @@ The gateway uses the following dependencies:
 - Eureka Discovery Client (REST based service to read config)
 - Config Client (Read from config server)
 - Spring Boot Actuator (Operation and Expose metrics)
+- Zipkin
 
 ## Discovery Server
 
@@ -42,6 +44,7 @@ The Employee microservice needs the following main dependencies:
 - Config client
 - Eureka Discovery Client
 - Spring Boot Actuator
+- Zipkin
 - Spring REST Docs
 - Spring Auto REST Docs
 
@@ -57,6 +60,7 @@ The Employee microservice needs the following dependencies:
 - Eureka Discovery Client
 - Spring Boot Actuator
 - OpenFeign (added after some coding)
+- Zipkin
 - Spring REST Docs
 - Spring Auto REST Docs
 
@@ -83,7 +87,7 @@ The Employee microservice needs the following dependencies:
 8. Move the config properties to the config server.
 9. Use zipkin to track traces between microservices.
    - Use Docker compose yml file to describe the service Zipkin
-   - Add the zipkin related dependencies to the microservices:
+   - Add the `zipkin` related dependencies to the microservices:
      - Discovery server
      - Employee
      - Department
@@ -92,4 +96,4 @@ The Employee microservice needs the following dependencies:
     - org.junit.jupiter
     - org.springframework.restdocs
 11. Configure the test for each operation
-12. Add Dependencies and plugins for Spring Auto REST Docs. 
+12. Add Dependencies and plugins for `spring auto rest docs`. 
