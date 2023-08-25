@@ -1,0 +1,11 @@
+= Microservices with Spring REST Docs
+
+This is an example output for Department microservice reachable at gateway in port http://localhost:8222:
+
+include::{snippets}/test-add-department1/auto-section.adoc[]
+
+include::{snippets}/test-add-department2/auto-section.adoc[]
+
+include::{snippets}/test-get-departments/auto-section.adoc[]
+
+You always get the same message.

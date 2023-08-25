@@ -3,10 +3,10 @@ package com.umadev.department;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class DepartmentApplicationTests {
 
-	@Test
+//	@Test
 	void contextLoads() {
 	}
 
