@@ -1,5 +1,28 @@
+/*-
+ * #%L
+ * employee
+ * %%
+ * Copyright (C) 2015 - 2023 Scalable Capital GmbH
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * #L%
+ */
+
 package com.umadev.employee.controller;
 
+import capital.scalable.restdocs.AutoDocumentation;
+import capital.scalable.restdocs.jackson.JacksonResultHandlers;
+import capital.scalable.restdocs.response.ResponseModifyingPreprocessors;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.umadev.employee.entity.Employee;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +33,10 @@ import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDoc
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.restdocs.RestDocumentationContextProvider;
 import org.springframework.restdocs.RestDocumentationExtension;
+import org.springframework.restdocs.cli.CliDocumentation;
+import org.springframework.restdocs.http.HttpDocumentation;
+import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation;
+import org.springframework.restdocs.operation.preprocess.Preprocessors;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -41,9 +68,9 @@ public class EmployeeControllerTest {
 
     @Autowired
     private WebApplicationContext context;
-
     private MockMvc mockMvc;
-
+    @Autowired
+    private ObjectMapper objectMapper;
     List<Employee> employees =null;
     Employee employeeToAdd1 = null;
     Employee employeeToAdd2 = null;
@@ -53,7 +80,31 @@ public class EmployeeControllerTest {
                       RestDocumentationContextProvider restDocumentation) {
 
         this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-                .apply(documentationConfiguration(restDocumentation)).build();
+                .apply(documentationConfiguration(restDocumentation))
+                .alwaysDo(JacksonResultHandlers.prepareJackson(objectMapper))
+                .alwaysDo(MockMvcRestDocumentation.document("{method-name}",
+                        Preprocessors.preprocessRequest(),
+                        Preprocessors.preprocessResponse(
+                                ResponseModifyingPreprocessors.replaceBinaryContent(),
+                                ResponseModifyingPreprocessors.limitJsonArrayLength(objectMapper),
+                                Preprocessors.prettyPrint())))
+                .apply(MockMvcRestDocumentation.documentationConfiguration(restDocumentation)
+                        .uris()
+                        .withScheme("http")
+                        .withHost("localhost")
+                        .withPort(8080)
+                        .and().snippets()
+                        .withDefaults(CliDocumentation.curlRequest(),
+                                HttpDocumentation.httpRequest(),
+                                HttpDocumentation.httpResponse(),
+                                AutoDocumentation.requestFields(),
+                                AutoDocumentation.responseFields(),
+                                AutoDocumentation.pathParameters(),
+                                AutoDocumentation.requestParameters(),
+                                AutoDocumentation.description(),
+                                AutoDocumentation.methodAndPath(),
+                                AutoDocumentation.section()))
+                .build();
 
         // id = 0, because our controller is defined return the same object that we passed  (id=0 in order to create the new employee)
         employeeToAdd1 = new Employee(0,"Penelope", "Hartmann", "Andreane17@yahoo.com", 1);
@@ -69,10 +120,9 @@ public class EmployeeControllerTest {
         String employeeJson = new ObjectMapper().writeValueAsString(employeeToAdd1);
         this.mockMvc.perform(post("/api/employees")
                         .content(employeeJson)
-                        .contentType("application/json")).andDo(print())
+                        .contentType("application/json"))
                 .andExpect(status().isCreated() )
-                .andExpect(MockMvcResultMatchers.content().json(employeeJson))
-                .andDo(document("{methodName}", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint())));
+                .andExpect(MockMvcResultMatchers.content().json(employeeJson));
     }
 
     @Test
@@ -80,20 +130,16 @@ public class EmployeeControllerTest {
         String employeeJson = new ObjectMapper().writeValueAsString(employeeToAdd2);
         this.mockMvc.perform(post("/api/employees")
                         .content(employeeJson)
-                        .contentType("application/json")).andDo(print())
+                        .contentType("application/json"))
                 .andExpect(status().isCreated() )
-                .andExpect(MockMvcResultMatchers.content().json(employeeJson))
-                .andDo(document("{methodName}", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint())));
+                .andExpect(MockMvcResultMatchers.content().json(employeeJson));
     }
     @Test
     public void testGetEmployees() throws Exception {
         this.mockMvc.perform(get("/api/employees")
                         .contentType("application/json"))
-                .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(employees)))
-                .andDo(document("{methodName}", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint())
-                ));
+                .andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(employees)));
     }
 
 
