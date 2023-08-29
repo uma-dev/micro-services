@@ -4,10 +4,10 @@ Monorepo with an application built with microservices architecture.
 
 ## Architecture
 
-<!-- <p align="center">
-  <img src="" />
+<p align="center">
+  <img src="https://github.com/uma-dev/micro-services/assets/22565959/177e9380-1801-463d-b16f-88a0d85179c1" />
 </p>
--->
+
 
 ## Gateway
 
