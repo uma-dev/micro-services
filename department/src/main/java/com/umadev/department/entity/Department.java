@@ -11,6 +11,10 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 
+// By default hibernate use PhysicalNamingStrategy
+// if not  @Table(name = "some_table", schema = "development") 
+// annotation is provided
+
 public class Department {
     @Id
     private Integer id;

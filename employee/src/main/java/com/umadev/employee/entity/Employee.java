@@ -31,6 +31,10 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 
+// Can use the table annotation for providing the table and schema name that will be generated
+// @Table(name = "some_table", schema = "development")
+
+
 public class Employee {
     @Id
     private Integer id;
