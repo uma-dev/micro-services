@@ -1,0 +1,516 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2em 7em;
+}
+
+.header__logo__name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.header__links {
+  display: flex;
+  align-items: center;
+  font-size: medium;
+  gap: 2em;
+}
+
+.header__links li {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+}
+
+.header a {
+  color: black;
+  font-weight: 300;
+}
+
+.bx-menu {
+  display: none;
+}
+
+/* Main styles */
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+/* First section */
+.white__section {
+  display: flex;
+  flex-direction: row;
+  padding: 4em 6em;
+  gap: 4em;
+}
+
+.side__text {
+  flex: 1;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.5em;
+}
+
+.side__text h2 {
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.side__text p {
+  font-size: 20px;
+}
+
+.side__image {
+  flex: 2.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Cards container */
+.card__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  width: 80%;
+  margin: auto;
+}
+
+.card__half__width {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  border-radius: 1em;
+  border: 1px solid black;
+  padding: 2em;
+  gap: 1em;
+}
+
+.card__half__width li {
+  list-style: circle;
+  margin-left: 2em;
+}
+
+.card__half__width h3 {
+  font-weight: bold;
+}
+
+.card__half__width a {
+  color: black;
+}
+
+/* White card minimal */
+.rectangle__white__minimal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  padding: 10% 15%;
+}
+
+/* Footer */
+.footer {
+  display: flex; /* Usamos flex-box*/
+  flex-direction: row; /* Usamos columnas para sus elementos*/
+  padding: 1.5em 100px;
+  gap: 1em;
+}
+
+.footer__side {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  padding: 1em;
+}
+
+.seperator {
+  height: 15%;
+  width: 1px;
+  background: black;
+  position: absolute;
+  left: 50%;
+}
+
+.footer__side__column {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 0 40px;
+}
+
+.footer__side__column .brand {
+  font-size: 24px;
+  font-weight: bold;
+  padding-left: 2em;
+}
+
+.footer__side__column span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.footer__side__column .phrase {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.footer__side__column p {
+  font-size: 14px;
+}
+
+.footer__left {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  gap: 3em;
+}
+
+.footer__side__row {
+  display: flex;
+  flex-direction: row;
+  padding: 0 40px;
+  gap: 120px;
+}
+
+.footer__links a {
+  color: black;
+  font-size: 14;
+  font-weight: 200;
+}
+
+.footer__links li {
+  margin-bottom: 8px;
+}
+
+.footer .links__bold {
+  font-weight: bolder;
+}
+
+.footer__copyrigth {
+  gap: 1em;
+  font-size: 14px;
+}
+
+/* Media queries */
+
+/* Tablet  
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1180px) {
+  /*Header tablet*/
+  .header__links {
+    display: none;
+  }
+  .header i {
+    display: inline;
+  }
+
+  /*First section tablet*/
+  .white__section {
+    padding: 3em 4em;
+    gap: 2em;
+  }
+
+  .side__text {
+    padding: 1.5em 0;
+  }
+
+  .side__text h2 {
+    font-size: 2em;
+    font-weight: 500;
+  }
+
+  .side__image {
+    max-width: 400px;
+  }
+
+  /* Cards container tablet*/
+  .card__container {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 3em;
+    gap: 3em;
+  }
+
+  /* White card minimal tablet*/
+  .rectangle__white__minimal {
+    width: 90%;
+    padding: 4em;
+    margin: auto;
+  }
+
+  /* Footer tablet*/
+  .footer {
+    padding: 3em 1.5em;
+    gap: 0;
+  }
+
+  .footer__side {
+    gap: 1em;
+    padding: 0 1em;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .seperator {
+    display: none;
+  }
+
+  .footer__side__column {
+    flex-direction: column;
+    padding: 1em;
+    align-items: center;
+  }
+
+  .footer__side__column .brand {
+    padding-left: 0;
+  }
+
+  .footer__side__column p {
+    font-size: 11px;
+  }
+
+  .footer__left {
+    display: flex;
+    padding: 1em;
+    gap: 2 xem;
+  }
+
+  .footer__side__row {
+    gap: 5em;
+  }
+
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+@media (min-width: 481px) and (max-width: 767px) {
+  /*Header  Mobiles (Landscape)*/
+  .header__links {
+    display: none;
+  }
+  .header i {
+    display: inline;
+  }
+
+  /*First section  Mobiles (Landscape)*/
+  .white__section {
+    padding: 3em 1.5em;
+    gap: 2em;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .side__text {
+    padding: 1em 0;
+  }
+
+  .side__text h2 {
+    font-size: 1.5em;
+    font-weight: 500;
+  }
+
+  .side__text p {
+    font-size: 1em;
+  }
+
+  .side__image {
+    width: 90%;
+  }
+
+  /* Cards container  Mobiles (Landscape)*/
+  .card__container {
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 2em;
+    gap: 1.5em;
+  }
+
+  .card__half__width {
+    padding: 2.5em;
+  }
+
+  /* White card minimal  Mobiles (Landscape)*/
+  .rectangle__white__minimal {
+    width: 90%;
+    padding: 4em;
+    margin: auto;
+  }
+
+  /* Footer  Mobiles (Landscape)*/
+  .footer {
+    padding: 3em 1em;
+    gap: 1.5em;
+    flex-direction: column;
+  }
+
+  .footer__side {
+    gap: 1em;
+    padding: 0 1em;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .seperator {
+    display: none;
+  }
+
+  .footer__side__column {
+    flex-direction: column;
+    padding: 0.5em 1.5em;
+    align-items: center;
+  }
+
+  .footer__side__column .brand {
+    padding-left: 0;
+  }
+
+  .footer__side__column p {
+    font-size: 1em;
+    max-width: 450px;
+  }
+
+  .footer__left {
+    padding: 1em;
+    gap: 1em;
+  }
+
+  .footer__side__row {
+    gap: 10em;
+  }
+
+  .footer__links li,
+  .footer .links__bold__li {
+    font-size: 0.9em;
+  }
+}
+
+/* Phone 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+@media (min-width: 320px) and (max-width: 480px) {
+  /*Header phone*/
+  .header {
+    padding: 1em;
+  }
+
+  .header__links {
+    display: none;
+  }
+  .header i {
+    display: inline;
+  }
+
+  /*First section phone*/
+  .white__section {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 3em 1em;
+    gap: 4em;
+  }
+
+  .side__text {
+    padding: 0;
+  }
+
+  .side__text h2 {
+    font-size: 1.6em;
+    font-weight: 500;
+  }
+
+  .side__image {
+    max-width: 360px;
+    align-self: center;
+  }
+
+  /* Cards container phone*/
+  .card__container {
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em 0;
+    gap: 3em;
+  }
+
+  .card__half__width {
+    margin: 0 3em;
+  }
+
+  /* White card minimal phone*/
+  .rectangle__white__minimal {
+    padding: 3em 1em;
+  }
+
+  /* Footer phone*/
+  .footer {
+    flex-direction: column; /* Usamos columnas para sus elementos*/
+    padding: 1em;
+    gap: 1em;
+    background-color:b eige;
+  }
+
+  .footer__side {
+    gap: 1em;
+    padding: 0 1em;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .seperator {
+    display: none;
+  }
+
+  .footer__side__column {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer__side__column .brand {
+    padding-left: 0;
+  }
+
+  .footer__left {
+    display: flex;
+    padding: 1em;
+    gap: 2em;
+  }
+
+  .footer__side__row {
+    gap: 1em;
+  }
+
+}
