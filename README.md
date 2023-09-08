@@ -50,7 +50,7 @@ The Employee microservice needs the following main dependencies:
 
 ## Department
 
-The Employee microservice needs the following dependencies:
+The Department microservice needs the following dependencies:
 
 - DB driver (MySQL, PostgreSQL, etc)
 - Lombok
