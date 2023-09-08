@@ -5,7 +5,7 @@ Monorepo with an application built with microservices architecture.
 ## Architecture
 
 <p align="center">
-  <img src="https://github.com/uma-dev/micro-services/assets/22565959/177e9380-1801-463d-b16f-88a0d85179c1" />
+  <img src="https://github.com/uma-dev/micro-services/assets/22565959/f323886d-d747-4c93-bf90-c287afa92402" />
 </p>
 
 
