@@ -14,8 +14,28 @@
     />
     <link rel="stylesheet" type="text/css" href="./css/styles.css" />
   </head>
+
   <body>
+    
     <header class="header">
+      <nav role="navigation">
+        <div id="menuToggle">
+          <!--
+          A fake / hidden checkbox is used as click reciever,
+          so you can use the :checked selector on it.
+          -->
+          <input type="checkbox" />
+          
+          <span></span>
+          <span></span>
+          <span></span>
+          
+          <ul id="menu">
+            <li><i class="bx bx-notepad"></i><a href="./employee/index.html">Employees</a></li>
+          <li><i class="bx bx-notepad"></i><a href="./department/index.html">Departments</a></li>
+          </ul>
+        </div>
+      </nav>
       <a class="header__logo__name" href="#">MICROSERVICES</a>
       <nav>
         <ul class="header__links">
@@ -24,7 +44,6 @@
         </ul>
       </nav>
 
-      <i class="bx bx-menu bx-md"></i>
     </header>
 
     <main class="main">
