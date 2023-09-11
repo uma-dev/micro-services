@@ -23,12 +23,17 @@ package com.umadev.employee.service;
 import com.umadev.employee.entity.Employee;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EmployeeService {
 
     List<Employee> findAll();
 
+    Optional<Employee> findEmployeeById(Integer employeeID);
+
     Employee save(Employee theEmployee);
 
     List<Employee> findAllEmployeesByDepartment(Integer departmentId);
+
+    void deleteById(Integer employeeId);
 }

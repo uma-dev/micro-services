@@ -20,6 +20,7 @@
 
 package com.umadev.employee.controller;
 
+import com.umadev.employee.dao.EmployeeRepository;
 import com.umadev.employee.entity.Employee;
 import com.umadev.employee.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController // @RestController return JSON
 @RequestMapping("/api")
@@ -72,4 +74,32 @@ public class EmployeeController {
     ) {
         return ResponseEntity.ok(employeeService.findAllEmployeesByDepartment(departmentId));
     }
+  
+    @GetMapping("/employees/{employeeId}")
+    public ResponseEntity<Employee> findById(
+      @PathVariable("employeeId") Integer employeeId
+    ){
+        Optional<Employee> theEmployee = employeeService.findEmployeeById(employeeId);
+        if( theEmployee.isPresent() ){
+          return ResponseEntity.ok( theEmployee.get() );
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    
+    @PutMapping("/employees")
+    public ResponseEntity<Employee> update( @RequestBody Employee theEmployee){
+      Employee dbEmployee =employeeService.save(theEmployee);
+      return ResponseEntity.ok( dbEmployee );
+    }
+
+    @DeleteMapping("/employees/{employeeId}")
+    public ResponseEntity<Integer> delete( @PathVariable Integer employeeId ){
+      Optional<Employee> dbEmployee = employeeService.findEmployeeById(employeeId);
+      if(dbEmployee.isPresent()){
+        employeeService.deleteById(employeeId);
+        return new ResponseEntity<Integer>(employeeId, HttpStatus.OK);
+      }
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
 }
