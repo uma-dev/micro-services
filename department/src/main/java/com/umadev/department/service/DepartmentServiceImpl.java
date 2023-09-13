@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
@@ -26,25 +27,36 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
+    public Optional<Department> findDepartmentById(Integer departmentId){
+        return departmentRepository.findById(departmentId);
+    }
+
+    @Override
     public Department save(Department theDepartment){
         return departmentRepository.save(theDepartment);
     }
 
     @Override
-    public FullDepartmentResponse findDepartmentsWithEmployees(Integer employeeId){
+    public FullDepartmentResponse findDepartmentsWithEmployees(Integer departmentId){
         // var is used because Java guess the type of department (Department)
-        var department = departmentRepository.findById(employeeId)
+        var department = departmentRepository.findById(departmentId)
                 .orElse(
                         Department.builder()
                                 .name("NOT_FOUND")
                                 .email("NOT_FOUND")
                                 .build()); // avoid null pointer exceptions
         // Find all the students from the student client with OpenFeign
-        var employees = employeeClient.findAllEmployeesByDepartment(employeeId);
+        var employees = employeeClient.findAllEmployeesByDepartment(departmentId);
         return  FullDepartmentResponse.builder()
                 .name(department.getName())
                 .email(department.getEmail())
                 .employees(employees)
                 .build();
     }
+
+    @Override
+    public void deleteById(Integer departmentId){
+        departmentRepository.deleteById(departmentId);
+    }
+
 }

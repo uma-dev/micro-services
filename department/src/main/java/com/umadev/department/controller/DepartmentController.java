@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController // @RestController return JSON
 @RequestMapping("/api")
@@ -47,12 +48,38 @@ public class DepartmentController {
         return ResponseEntity.ok(departmentService.findAll());
     }
 
-    @GetMapping("/departments/with-employees/{employeeId}")
+    @GetMapping("/departments/with-employees/{departmentId}")
     public ResponseEntity<FullDepartmentResponse> findAll(
-            @PathVariable("employeeId") Integer employeeId
+            @PathVariable("departmentId") Integer departmentId
     ) {
-        return ResponseEntity.ok(departmentService.findDepartmentsWithEmployees(employeeId));
+        return ResponseEntity.ok(departmentService.findDepartmentsWithEmployees( departmentId ));
     }
 
+    @GetMapping("/departments/{departmentId}")
+    public ResponseEntity<Department> findById(
+        @PathVariable("departmentId") Integer departmentId
+      ){
+        Optional<Department> departmentDb =  departmentService.findDepartmentById( departmentId );
+        if( departmentDb.isPresent() ){
+          return ResponseEntity.ok( departmentDb.get() );
+        }  
+        return new ResponseEntity<>( HttpStatus.NOT_FOUND );
+      } 
+
+    @DeleteMapping("/departments/{departmentId}")
+    public ResponseEntity<Integer> delete( @PathVariable("departmentId") Integer departmentId ){
+      Optional<Department> dbDepartment = departmentService.findDepartmentById( departmentId );
+      if( dbDepartment.isPresent() ){
+        departmentService.deleteById( departmentId );
+        return new ResponseEntity<Integer>( departmentId, HttpStatus.OK );
+      }
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    } 
+
+    @PutMapping("/departments")
+    public ResponseEntity<Department> update( @RequestBody Department theDepartment ){
+      Department dbDepartment = departmentService.save(theDepartment);
+      return ResponseEntity.ok(dbDepartment);
+    }
 
 }
