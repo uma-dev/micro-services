@@ -1,11 +1,17 @@
 = Microservices with Spring REST Docs
 
-This is an example output for Department microservice reachable at gateway in port http://localhost:8222:
+This is an example output for GET, POST, PUT and DELETE requests to the Department microservice reachable at gateway in port http://localhost:8222:
 
 include::{snippets}/test-add-department1/auto-section.adoc[]
 
 include::{snippets}/test-add-department2/auto-section.adoc[]
 
 include::{snippets}/test-get-departments/auto-section.adoc[]
+
+include::{snippets}/test-update-department/auto-section.adoc[]
+
+include::{snippets}/test-delete-department-one-by-id-return-ok/auto-section.adoc[]
+
+include::{snippets}/test-delete-department-two-by-id-return-ok/auto-section.adoc[]
 
 You always get the same message.
