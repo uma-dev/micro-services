@@ -1,11 +1,17 @@
 = Microservices with Spring REST Docs
 
-This is an example output for Employee microservice reachable at gateway in port http://localhost:8222:
+This is an example output for POST and GET request to the Employee microservice reachable at gateway in port http://localhost:8222:
 
 include::{snippets}/test-add-employee1/auto-section.adoc[]
 
 include::{snippets}/test-add-employee2/auto-section.adoc[]
 
 include::{snippets}/test-get-employees/auto-section.adoc[]
+
+include::{snippets}/test-update-employee/auto-section.adoc[]
+
+include::{snippets}/test-delete-employee-one-by-id-return-ok/auto-section.adoc[]
+
+include::{snippets}/test-delete-employee-two-by-id-return-ok/auto-section.adoc[]
 
 You always get the same message.
