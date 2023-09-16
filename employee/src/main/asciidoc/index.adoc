@@ -1,6 +1,6 @@
 = Microservices with Spring REST Docs
 
-This is an example output for POST and GET request to the Employee microservice reachable at gateway in port http://localhost:8222:
+This is an example output for POST, GET, PUT and DELETE requests to the Employee microservice reachable at gateway in port http://localhost:8222:
 
 include::{snippets}/test-add-employee1/auto-section.adoc[]
 
