@@ -34,12 +34,18 @@ public class DepartmentController {
     // Add POST mapping for creating a new Department
     @PostMapping("/departments")
     @ResponseStatus(HttpStatus.CREATED)
-    public Department save(@RequestBody Department department) {
-        //Set the ID to zero/0 just in case it's different in the JSON.
-        //ID == 0 will create a new Department
-        department.setId(0);
-
-        return departmentService.save(department);
+    public ResponseEntity<Department> save(@RequestBody Department department) {
+        try{
+            //Set the ID to zero/0 just in case it's different in the JSON.
+            //ID == 0 will create a new Department  
+            department.setId(0);
+            Department savedDepartment = departmentService.save(department);
+            return new ResponseEntity<>(savedDepartment, HttpStatus.CREATED);
+        }
+        catch(Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+ 
     }
 
     // Add GET mapping to expose /departments with the list of departments

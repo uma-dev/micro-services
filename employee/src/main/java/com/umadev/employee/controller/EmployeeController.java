@@ -54,12 +54,17 @@ public class EmployeeController {
     // Add POST mapping for creating a new Employee
     @PostMapping("/employees")
     @ResponseStatus(HttpStatus.CREATED)
-    public Employee save( @RequestBody Employee employee) {
-        //Set the ID to zero/0 just in case it's different in the JSON.
-        //ID == 0 will create a new Employee
-        employee.setId(0);
-
-        return employeeService.save(employee);
+    public ResponseEntity<Employee> save( @RequestBody Employee employee) {
+        try{
+            //Set the ID to zero/0 just in case it's different in the JSON.
+            //ID == 0 will create a new Employee
+            employee.setId(0);
+            Employee savedEmployee = employeeService.save(employee);
+            return new ResponseEntity<>(savedEmployee, HttpStatus.CREATED);
+        }
+        catch(Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     // Add GET mapping to expose /employees with the list of employees
