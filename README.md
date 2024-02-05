@@ -1,6 +1,6 @@
 # Microservices with spring boot
 
-Monorepo with an application built with microservices architecture.
+Monorepo API built using a microservices architecture.
 
 ## Architecture
 
