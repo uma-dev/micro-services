@@ -1,4 +1,4 @@
-# Microservices with spring boot
+# Students API (microservices)
 
 Monorepo API built using a microservices architecture.
 
