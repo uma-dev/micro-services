@@ -1,13 +1,20 @@
-# Students API (microservices)
+# Employees REST API (microservices)
 
-Monorepo API built using a microservices architecture.
+Monorepo REST API built using a microservices architecture.
+
+## Components
+
+- Gateway
+- Discovery server
+- Config server
+- Employee microservice
+- Department microservice
 
 ## Architecture
 
 <p align="center">
   <img src="https://github.com/uma-dev/micro-services/assets/22565959/f323886d-d747-4c93-bf90-c287afa92402" />
 </p>
-
 
 ## Gateway
 
@@ -96,6 +103,5 @@ The Department microservice needs the following dependencies:
     - org.junit.jupiter
     - org.springframework.restdocs
 11. Configure the test for each operation
-12. Add Dependencies and plugins for `spring auto rest docs`. 
+12. Add Dependencies and plugins for `spring auto rest docs`.
 13. Write the test for the full CRUD support
-
