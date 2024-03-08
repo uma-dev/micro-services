@@ -1,6 +1,6 @@
 # Employees REST API (microservices)
 
-Monorepo REST API built using a microservices architecture.
+Monorepo REST API built with microservices architecture.
 
 ## Components
 
