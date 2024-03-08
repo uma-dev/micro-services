@@ -10,6 +10,12 @@ Monorepo REST API built using a microservices architecture.
 - Employee microservice
 - Department microservice
 
+## Features
+
+- Microservices architecture
+- Spring cloud
+- Zipkin support (can be run inside a container)
+
 ## Architecture
 
 <p align="center">
